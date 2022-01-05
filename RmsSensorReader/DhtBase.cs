@@ -12,25 +12,9 @@ namespace RmsSensorReader
     public abstract class DhtBase : IDisposable
     {
         private readonly CommunicationProtocol _protocol;
-
-        /// <summary>
-        /// Read buffer
-        /// </summary>
         private ValueArray<byte> _readBuff = new ValueArray<byte>(5);
-
-        /// <summary>
-        /// GPIO pin
-        /// </summary>
         protected readonly int _pin;
-
-        /// <summary>
-        /// True to dispose the Gpio Controller
-        /// </summary>
         protected readonly bool _shouldDispose;
-
-        /// <summary>
-        /// I2C device used to communicate with the device
-        /// </summary>
         protected I2cDevice? _i2cDevice;
 
         /// <summary>
@@ -306,12 +290,6 @@ namespace RmsSensorReader
             return _readBuff;
         }
 
-        /// <summary>
-        /// Returns the current temperature
-        /// </summary>
-        /// <param name="temperature">[Out] The current temperature on success</param>
-        /// <returns>True on success, false if reading failed</returns>
-        //[Telemetry("Temperature")]
         public bool TryReadTemperature(
 #if NET5_0_OR_GREATER
         [NotNullWhen(true)]
@@ -329,12 +307,6 @@ namespace RmsSensorReader
             return false;
         }
 
-        /// <summary>
-        /// Returns the current relative humidity
-        /// </summary>
-        /// <param name="humidity">[Out] The current relative humidity on success</param>
-        /// <returns>True on success, false if reading failed</returns>
-        //[Telemetry("Humidity")]
         public bool TryReadHumidity(
 #if NET5_0_OR_GREATER
             [NotNullWhen(true)]
@@ -352,21 +324,9 @@ namespace RmsSensorReader
             return false;
         }
 
-        /// <summary>
-        /// Converting data to humidity
-        /// </summary>
-        /// <param name="readBuff">Data</param>
-        /// <returns>Humidity</returns>
         internal abstract RelativeHumidity GetHumidity(Span<byte> readBuff);
-
-        /// <summary>
-        /// Converting data to Temperature
-        /// </summary>
-        /// <param name="readBuff">Data</param>
-        /// <returns>Temperature</returns>
         internal abstract Temperature GetTemperature(Span<byte> readBuff);
 
-        /// <inheritdoc/>
         public void Dispose()
         {
             if (_shouldDispose)
