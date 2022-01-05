@@ -1,14 +1,10 @@
-﻿using System;
-using System.Device.I2c;
-using System.Threading;
-using Iot.Device.Common;
+﻿using Iot.Device.Common;
 using RmsSensorReader;
 using UnitsNet;
 
 Console.WriteLine("Hello DHT!");
 Console.WriteLine();
 var token = args[0];
-Console.WriteLine($"Token: {token}");
 
 int pin = 12;
 
@@ -21,6 +17,7 @@ using (Dht22 dht22 = new(pin))
 async Task Dht(DhtBase dht, string token)
 {
     var datastore = new DataStore(token);
+
     while (true)
     {
         Temperature temperature = default;
@@ -47,7 +44,7 @@ async Task Dht(DhtBase dht, string token)
         if (success)
         {
             await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent);
-            Thread.Sleep(10000);
+            Thread.Sleep(30 * 1000);
         }
         else
         {
