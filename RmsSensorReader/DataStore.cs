@@ -28,6 +28,7 @@ namespace RmsSensorReader
             {
                 string s = await result.Content.ReadAsStringAsync();
             }
+            Console.WriteLine($"Saving data outcome: {result.StatusCode}");
         }
     }
 }

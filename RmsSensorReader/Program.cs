@@ -8,6 +8,7 @@ using UnitsNet;
 Console.WriteLine("Hello DHT!");
 Console.WriteLine();
 var token = args[0];
+Console.WriteLine($"Token: {token}");
 
 int pin = 12;
 
