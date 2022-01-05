@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RmsSensorReader", "RmsSensorReader.csproj", "{634DD714-5369-4D66-9985-2E487EDADAAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "..\TestProject\TestProject.csproj", "{3BD6BB09-80BB-4D98-A707-EFF2C387782C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{634DD714-5369-4D66-9985-2E487EDADAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634DD714-5369-4D66-9985-2E487EDADAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634DD714-5369-4D66-9985-2E487EDADAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD6BB09-80BB-4D98-A707-EFF2C387782C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD6BB09-80BB-4D98-A707-EFF2C387782C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD6BB09-80BB-4D98-A707-EFF2C387782C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD6BB09-80BB-4D98-A707-EFF2C387782C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

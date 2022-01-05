@@ -7,17 +7,19 @@ using UnitsNet;
 
 Console.WriteLine("Hello DHT!");
 Console.WriteLine();
+var token = args[0];
 
 int pin = 12;
 
 Console.WriteLine($"Reading temperature and humidity on DHT22, pin {pin}");
 using (Dht22 dht22 = new(pin))
 {
-    Dht(dht22);
+    await Dht(dht22, token);
 }    
 
-void Dht(DhtBase dht)
+async Task Dht(DhtBase dht, string token)
 {
+    var datastore = new DataStore(token);
     while (true)
     {
         Temperature temperature = default;
@@ -41,6 +43,14 @@ void Dht(DhtBase dht)
         }
 
         // You must wait some time before trying to read the next value
-        Thread.Sleep(5000);
+        if (success)
+        {
+            await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent);
+            Thread.Sleep(10000);
+        }
+        else
+        {
+            Thread.Sleep(2000);
+        }
     }
 }
