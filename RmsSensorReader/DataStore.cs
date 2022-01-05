@@ -15,6 +15,8 @@ public class DataStore
 
     public async Task StoreReading(double temp, double humidity)
     {
+        temp = Math.Round(temp, 2);
+        humidity = Math.Round(humidity, 2);
         var data = new { timestamp = DateTime.UtcNow, temperature = temp, humidity = humidity };
         string url = "https://backend.thinger.io/v3/users/gustavf/devices/berlinstation2/callback/data";
         string json = JsonSerializer.Serialize(data);
