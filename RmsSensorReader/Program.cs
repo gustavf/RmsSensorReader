@@ -2,17 +2,18 @@
 using RmsSensorReader;
 using UnitsNet;
 
+
 Console.WriteLine("Hello DHT!");
 Console.WriteLine();
 var token = args[0];
-
 int pin = 12;
 
 Console.WriteLine($"Reading temperature and humidity on DHT22, pin {pin}");
 using (Dht22 dht22 = new(pin))
 {
     await Dht(dht22, token);
-}    
+}
+
 
 async Task Dht(DhtBase dht, string token)
 {
