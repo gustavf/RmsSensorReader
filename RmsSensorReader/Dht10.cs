@@ -4,11 +4,9 @@ using System.Device.I2c;
 using Iot.Device.Common;
 using UnitsNet;
 
+
 namespace RmsSensorReader;
 
-/// <summary>
-/// Temperature and Humidity Sensor DHT10
-/// </summary>
 public class Dht10 : DhtBase
 {
     /// <summary>

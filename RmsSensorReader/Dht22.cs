@@ -1,13 +1,8 @@
-﻿
-using System;
-using System.Device.Gpio;
+﻿using System.Device.Gpio;
 using UnitsNet;
 
 namespace RmsSensorReader;
 
-/// <summary>
-/// Temperature and Humidity Sensor DHT22
-/// </summary>
 public class Dht22 : DhtBase
 {
     /// <summary>

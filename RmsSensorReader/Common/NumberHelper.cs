@@ -1,49 +1,48 @@
 ﻿using System;
 
-namespace Iot.Device.Common
+namespace Iot.Device.Common;
+
+/// <summary>
+/// Helpers for number.
+/// </summary>
+internal static class NumberHelper
 {
     /// <summary>
-    /// Helpers for number.
+    /// BCD To decimal
     /// </summary>
-    internal static class NumberHelper
+    /// <param name="bcd">BCD Code</param>
+    /// <returns>decimal</returns>
+    public static int Bcd2Dec(byte bcd) => ((bcd >> 4) * 10) + (bcd % 16);
+
+    /// <summary>
+    /// BCD To decimal
+    /// </summary>
+    /// <param name="bcds">BCD Code</param>
+    /// <returns>decimal</returns>
+    public static int Bcd2Dec(byte[] bcds)
     {
-        /// <summary>
-        /// BCD To decimal
-        /// </summary>
-        /// <param name="bcd">BCD Code</param>
-        /// <returns>decimal</returns>
-        public static int Bcd2Dec(byte bcd) => ((bcd >> 4) * 10) + (bcd % 16);
-
-        /// <summary>
-        /// BCD To decimal
-        /// </summary>
-        /// <param name="bcds">BCD Code</param>
-        /// <returns>decimal</returns>
-        public static int Bcd2Dec(byte[] bcds)
+        int result = 0;
+        foreach (byte bcd in bcds)
         {
-            int result = 0;
-            foreach (byte bcd in bcds)
-            {
-                result *= 100;
-                result += Bcd2Dec(bcd);
-            }
-
-            return result;
+            result *= 100;
+            result += Bcd2Dec(bcd);
         }
 
-        /// <summary>
-        /// Decimal To BCD
-        /// </summary>
-        /// <param name="dec">decimal</param>
-        /// <returns>BCD Code</returns>
-        public static byte Dec2Bcd(int dec)
-        {
-            if ((dec > 99) || (dec < 0))
-            {
-                throw new ArgumentException(nameof(dec), "Value must be between 0-99.");
-            }
+        return result;
+    }
 
-            return (byte)(((dec / 10) << 4) + (dec % 10));
+    /// <summary>
+    /// Decimal To BCD
+    /// </summary>
+    /// <param name="dec">decimal</param>
+    /// <returns>BCD Code</returns>
+    public static byte Dec2Bcd(int dec)
+    {
+        if ((dec > 99) || (dec < 0))
+        {
+            throw new ArgumentException(nameof(dec), "Value must be between 0-99.");
         }
+
+        return (byte)(((dec / 10) << 4) + (dec % 10));
     }
 }
