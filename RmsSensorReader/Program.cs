@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Device.I2c;
 using System.Threading;
 using Iot.Device.Common;
@@ -10,15 +9,6 @@ Console.WriteLine("Hello DHT!");
 Console.WriteLine();
 
 int pin = 12;
-//try
-//{
-//    pin = Convert.ToInt32(pinChoise);
-//}
-//catch (Exception ex) when (ex is FormatException || ex is OverflowException)
-//{
-//    Console.WriteLine("Can't convert pin number.");
-//    return;
-//}
 
 Console.WriteLine($"Reading temperature and humidity on DHT22, pin {pin}");
 using (Dht22 dht22 = new(pin))

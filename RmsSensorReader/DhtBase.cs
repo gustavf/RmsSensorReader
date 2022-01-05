@@ -1,11 +1,7 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-
-using System;
+﻿using System;
 using System.Device;
 using System.Device.Gpio;
 using System.Device.I2c;
-//using System.Device.Model;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Iot.Device.Common;
@@ -13,10 +9,6 @@ using UnitsNet;
 
 namespace RmsSensorReader
 {
-    /// <summary>
-    /// Temperature and Humidity Sensor DHTxx
-    /// </summary>
-    //[Interface("Temperature and Humidity Sensor DHTxx")]
     public abstract class DhtBase : IDisposable
     {
         private readonly CommunicationProtocol _protocol;
