@@ -1,5 +1,4 @@
-﻿using System;
-using System.Device;
+﻿using System.Device;
 using System.Device.Gpio;
 using System.Device.I2c;
 using System.Diagnostics;

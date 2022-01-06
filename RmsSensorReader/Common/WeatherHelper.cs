@@ -2,10 +2,6 @@
 
 namespace Iot.Device.Common;
 
-/// <summary>
-/// This class contains methods to calculate meteorological values from different
-/// sensor measurements. Multiple sensor inputs are used to generate additional information.
-/// </summary>
 public static class WeatherHelper
 {
     /// <summary>

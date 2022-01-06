@@ -2,9 +2,6 @@
 
 namespace Iot.Device.Common;
 
-/// <summary>
-/// Helpers for number.
-/// </summary>
 internal static class NumberHelper
 {
     /// <summary>
