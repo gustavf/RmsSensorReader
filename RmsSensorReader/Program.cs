@@ -28,6 +28,7 @@ async Task Dht(DhtBase dht, string token)
         // both temperature and humidity are NAN
         if (success)
         {
+            Console.WriteLine(DateTime.Now);
             Console.WriteLine($"Temperature: {temperature.DegreesCelsius:F1}\u00B0C, Relative humidity: {humidity.Percent:F1}%");
 
             // WeatherHelper supports more calculations, such as saturated vapor pressure, actual vapor pressure and absolute humidity.
@@ -44,8 +45,16 @@ async Task Dht(DhtBase dht, string token)
         // You must wait some time before trying to read the next value
         if (success)
         {
-            await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent);
-            Thread.Sleep(30 * 1000);
+            try
+            {
+                await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent);
+                Thread.Sleep(60 * 1000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Thread.Sleep(2 * 1000);
+            }
         }
         else
         {
