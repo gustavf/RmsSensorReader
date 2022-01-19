@@ -26,7 +26,7 @@ async Task Dht(DhtBase dht, string token)
         bool success = dht.TryReadHumidity(out humidity) && dht.TryReadTemperature(out temperature);
         // You can only display temperature and humidity if the read is successful otherwise, this will raise an exception as
         // both temperature and humidity are NAN
-        if (success)
+        if (success && humidity.Percent <= 100)
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine($"Temperature: {temperature.DegreesCelsius:F1}\u00B0C, Relative humidity: {humidity.Percent:F1}%");
