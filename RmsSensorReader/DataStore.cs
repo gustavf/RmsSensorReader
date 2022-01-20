@@ -19,6 +19,7 @@ public class DataStore
     {
         temp = Math.Round(temp, 2);
         humidity = Math.Round(humidity, 2);
+        cpuTemp = Math.Round(cpuTemp, 2);
         var data = new { timestamp = DateTime.UtcNow, temperature = temp, humidity = humidity, cpu_temp = cpuTemp };
         string json = JsonSerializer.Serialize(data);
         var result = await client.PostAsync(url, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
