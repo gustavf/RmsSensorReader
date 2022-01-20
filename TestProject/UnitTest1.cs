@@ -10,7 +10,7 @@ namespace TestProject
         public async Task Test1()
         {
             var datastore = new DataStore("");
-            await datastore.StoreReading(10.1, 0.22);
+            await datastore.StoreReading(10.1, 0.22, 30.0);
         }
     }
 }

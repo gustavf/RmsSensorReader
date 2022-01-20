@@ -1,4 +1,5 @@
 ﻿using Iot.Device.Common;
+using Iot.Device.CpuTemperature;
 using RmsSensorReader;
 using UnitsNet;
 
@@ -45,9 +46,11 @@ async Task Dht(DhtBase dht, string token)
         // You must wait some time before trying to read the next value
         if (success)
         {
+            double? cpu = GetCpuTemperature();
+
             try
             {
-                await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent);
+                await datastore.StoreReading(temperature.DegreesCelsius, humidity.Percent, cpu ?? 0);
                 Thread.Sleep(60 * 1000);
             }
             catch (Exception ex)
@@ -61,4 +64,14 @@ async Task Dht(DhtBase dht, string token)
             Thread.Sleep(2000);
         }
     }
+}
+
+double? GetCpuTemperature()
+{
+    var cpuTemp = new CpuTemperature();
+    if (cpuTemp.IsAvailable)
+    {
+        return cpuTemp.Temperature.DegreesCelsius;
+    }
+    return null;
 }

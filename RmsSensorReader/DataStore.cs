@@ -6,6 +6,8 @@ namespace RmsSensorReader;
 public class DataStore
 {
     static HttpClient client;
+    string url = "https://backend.thinger.io/v3/users/gustavf/devices/berlinstation2/callback/data";
+
     public DataStore(string token)
     {
         client = new HttpClient();
@@ -13,12 +15,11 @@ public class DataStore
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
     }
 
-    public async Task StoreReading(double temp, double humidity)
+    public async Task StoreReading(double temp, double humidity, double cpuTemp)
     {
         temp = Math.Round(temp, 2);
         humidity = Math.Round(humidity, 2);
-        var data = new { timestamp = DateTime.UtcNow, temperature = temp, humidity = humidity };
-        string url = "https://backend.thinger.io/v3/users/gustavf/devices/berlinstation2/callback/data";
+        var data = new { timestamp = DateTime.UtcNow, temperature = temp, humidity = humidity, cpu_temp = cpuTemp };
         string json = JsonSerializer.Serialize(data);
         var result = await client.PostAsync(url, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
 
