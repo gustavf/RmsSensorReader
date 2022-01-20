@@ -47,6 +47,7 @@ async Task Dht(DhtBase dht, string token)
         if (success)
         {
             double? cpu = GetCpuTemperature();
+            Console.WriteLine($"CPU temp: {cpu.Value:F1}");
 
             try
             {
